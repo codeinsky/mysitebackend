@@ -9,7 +9,7 @@ import com.myweb.site.beans.repo.VoteRepo;
 import com.myweb.site.beans.*;
 
 @Service 
-public class MySiteDoa {
+public class MySiteDAO {
 	
 	@Autowired
 	AboutMeRepo aboutMeRepo;
@@ -24,13 +24,13 @@ public class MySiteDoa {
 	@Autowired 
 	VoteRepo voteRepo;
 	
-	public  void vote(int id, Date date, boolean like, boolean dislike, String comment) {
+	public  void vote(int id, Date date, Boolean like, Boolean dislike, String comment) {
 		Vote newVote = new Vote();
-		newVote.setComment(comment);
 		newVote.setDate(date);
 		newVote.setId(id);
-		newVote.setDislike(dislike);
-		newVote.setLike(like);
+		newVote.setLiked(like);
+		newVote.setUnliked(dislike);
+	
 		voteRepo.save(newVote);
 		
 		

@@ -1,6 +1,6 @@
 package com.myweb.site.beans;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,35 +12,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement 
 public class Vote {
 	
-	@Id 
 	@GeneratedValue
+	@Id 
 	private int id;
+
+	@Column 
+	private Boolean liked;
 	
-	@Column
-	private Boolean like;
-	
-	@Column
-	private Boolean dislike;
-	
-	@Column
-	private String comment;
+	@Column 
+	private Boolean unliked;
 	
 	@Column 
 	private Date date;
-
-	public Vote() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Vote(int id, Boolean like, Boolean dislike, String comment, Date date) {
-		super();
-		this.id = id;
-		this.like = like;
-		this.dislike = dislike;
-		this.comment = comment;
-		this.date = date;
-	}
+	
+	
 
 	public int getId() {
 		return id;
@@ -50,28 +35,20 @@ public class Vote {
 		this.id = id;
 	}
 
-	public Boolean getLike() {
-		return like;
+	public Boolean getLiked() {
+		return liked;
 	}
 
-	public void setLike(Boolean like) {
-		this.like = like;
+	public void setLiked(Boolean liked) {
+		this.liked = liked;
 	}
 
-	public Boolean getDislike() {
-		return dislike;
+	public Boolean getUnliked() {
+		return unliked;
 	}
 
-	public void setDislike(Boolean dislike) {
-		this.dislike = dislike;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setUnliked(Boolean unliked) {
+		this.unliked = unliked;
 	}
 
 	public Date getDate() {
@@ -82,12 +59,21 @@ public class Vote {
 		this.date = date;
 	}
 
-	@Override
-	public String toString() {
-		return "Vote [id=" + id + ", like=" + like + ", dislike=" + dislike + ", comment=" + comment + ", date=" + date
-				+ "]";
+	public Vote() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	
 
+	public Vote(int id, Boolean liked, Boolean unliked, Date date) {
+		super();
+		this.id = id;
+		this.liked = liked;
+		this.unliked = unliked;
+		this.date = date;
+	} 
+	
+	
+	
+	
+	
 }
