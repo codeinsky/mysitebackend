@@ -13,7 +13,9 @@ import com.myweb.site.beans.repo.AboutMeRepo;
 import com.myweb.site.beans.repo.AdminLogInRepo;
 import com.myweb.site.beans.repo.ProjectsRepo;
 import com.myweb.site.beans.repo.VisitorRepo;
+import com.myweb.site.beans.repo.VoteJpaRepo;
 import com.myweb.site.beans.repo.VoteRepo;
+import com.myweb.site.dao.MySiteDAO;
 
 @SpringBootTest
 class MyWebSiteApplicationTests {
@@ -33,7 +35,11 @@ class MyWebSiteApplicationTests {
 	@Autowired 
 	AboutMeRepo aboutMeRepo;
 	
+	@Autowired 
+	VoteJpaRepo voteJpaRepo;
 	
+	@Autowired 
+	MySiteDAO mySiteDAO;
 	
 
 	@Test
@@ -43,7 +49,6 @@ class MyWebSiteApplicationTests {
 	@Test
 	public void testVote() {
 		Vote testVote = new Vote();
-		testVote.setId(1);
 		testVote.setLiked(true);
 		testVote.setUnliked(false);
 		testVote.setDate(null);
@@ -55,7 +60,6 @@ class MyWebSiteApplicationTests {
 	public void createVisitor() {
 		Visitor newVisitor = new Visitor();
 		newVisitor.setComment("Local visitor");
-		newVisitor.setId(1);
 		newVisitor.setIp("1.2.3.4.5");
 		newVisitor.setDate(null);
 		visitorRepo.save(newVisitor);
@@ -79,7 +83,6 @@ class MyWebSiteApplicationTests {
 		newAboutMe.setCooment("JAVA EE");
 		newAboutMe.setDetails("Hibernet, Spring boot");
 		newAboutMe.setSection("Experience");
-		newAboutMe.setId(1);
 		aboutMeRepo.save(newAboutMe);
 		
 	}
@@ -92,8 +95,12 @@ class MyWebSiteApplicationTests {
 		newAdminLogin.setPassWord("1234");
 		newAdminLogin.setPassWord("+123987654");
 		newAdminLogin.setUserName("myUser");
-		newAdminLogin.setId(1);
 		adminLogInRepo.save(newAdminLogin);
 	}
+	
+//	@Test
+//	public void getLiks() {
+//		 System.out.print("All likes count " + mySiteDAO.getLikeCount());
+//	}
 
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import com.myweb.site.beans.repo.AboutMeRepo;
 import com.myweb.site.beans.repo.ProjectsRepo;
 import com.myweb.site.beans.repo.VisitorRepo;
+import com.myweb.site.beans.repo.VoteJpaRepo;
 import com.myweb.site.beans.repo.VoteRepo;
 import com.myweb.site.beans.*;
 
@@ -23,6 +24,9 @@ public class MySiteDAO {
 	@Autowired 
 	VoteRepo voteRepo;
 	
+	@Autowired 
+	VoteJpaRepo voteJpaRepo;
+	
 	public  void vote(Vote vote) {
 		voteRepo.save(vote);
 		
@@ -31,7 +35,6 @@ public class MySiteDAO {
 	
 	public  void visitor(Visitor visitor) {
 		visitorRepo.save(visitor);
-		
 	}
 	
 	public  void setProject(Projects project) {
@@ -40,9 +43,7 @@ public class MySiteDAO {
 	}
 	
 	public Iterable<Projects> getAllProjects(){
-		Iterable<Projects> allProjects;
-		allProjects = projectsRepo.findAll();
-		return allProjects;
+		return projectsRepo.findAll();
 	}
 	
 	public void deleteProject(Integer id) {
@@ -56,12 +57,19 @@ public class MySiteDAO {
 	}
 
 	public Iterable<AboutMe> getAllAboutMe(){
-		Iterable<AboutMe> aboutMe;
-		aboutMe= aboutMeRepo.findAll();
-		return aboutMe;
+		return aboutMeRepo.findAll();
 	}
 
 	public void deleteAboutMeSection(Integer id) {
 		aboutMeRepo.deleteById(id);
 	}
+	
+	public Iterable<Vote> getAllVotes(){
+		return voteRepo.findAll();
+	} 
+	
+	public Iterable<Visitor> getAllVisitors(){
+		return visitorRepo.findAll();
+	}
+	
 }
