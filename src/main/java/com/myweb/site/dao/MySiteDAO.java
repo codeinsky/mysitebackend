@@ -1,5 +1,4 @@
 package com.myweb.site.dao;
-import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.myweb.site.beans.repo.AboutMeRepo;
@@ -24,36 +23,20 @@ public class MySiteDAO {
 	@Autowired 
 	VoteRepo voteRepo;
 	
-	public  void vote(int id, Date date, Boolean like, Boolean dislike, String comment) {
-		Vote newVote = new Vote();
-		newVote.setDate(date);
-		newVote.setId(id);
-		newVote.setLiked(like);
-		newVote.setUnliked(dislike);
-	
-		voteRepo.save(newVote);
+	public  void vote(Vote vote) {
+		voteRepo.save(vote);
 		
 		
 	}
 	
-	public  void visitor(int id, Date date, String ip, String comment) {
-		Visitor newVisitor = new Visitor();
-		newVisitor.setId(id);
-		newVisitor.setComment(comment);
-		newVisitor.setDate(date);
-		newVisitor.setIp(ip);
-		visitorRepo.save(newVisitor);
+	public  void visitor(Visitor visitor) {
+		visitorRepo.save(visitor);
 		
 	}
 	
-	public  void setProject(int id, String comment, String links, String name, String system) {
-		Projects newProject = new Projects();
-		newProject.setComment(comment);
-		newProject.setId(id);
-		newProject.setLinks(links);
-		newProject.setName(name);
-		newProject.setSystem(system);
-		projectsRepo.save(newProject);
+	public  void setProject(Projects project) {
+		
+		projectsRepo.save(project);
 	}
 	
 	public Iterable<Projects> getAllProjects(){
@@ -67,12 +50,8 @@ public class MySiteDAO {
 		projectsRepo.deleteById(id);
 	}
 	
-	public void addAboutMeSection(Integer id, String section, String details, String comment) {
-		AboutMe aboutMe = new AboutMe();
-		aboutMe.setId(id);
-		aboutMe.setDetails(details);
-		aboutMe.setSection(section);
-		aboutMe.setCooment(comment);
+	public void addAboutMeSection(AboutMe aboutMe) {
+		
 		aboutMeRepo.save(aboutMe);
 	}
 
