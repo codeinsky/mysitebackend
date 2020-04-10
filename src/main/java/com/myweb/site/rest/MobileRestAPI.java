@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myweb.site.beans.Visitor;
+import com.myweb.site.beans.Vote;
 import com.myweb.site.dao.MySiteDAO;
 import com.myweb.site.security.JwtUtil;
 
@@ -48,5 +49,10 @@ public class MobileRestAPI {
 		
 	}
 	
+	@RequestMapping(value="/android/getallvotes", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public Iterable<Vote> getAllVote(){
+		return mySiteDAO.getAllVotes();
+		
+	}
 
 }
