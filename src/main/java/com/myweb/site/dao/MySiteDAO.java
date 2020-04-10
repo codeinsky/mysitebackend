@@ -72,4 +72,31 @@ public class MySiteDAO {
 		return visitorRepo.findAll();
 	}
 	
+	public int getVisitorCount() {
+		int count = 0;
+		Iterable<Visitor> allVisitors = visitorRepo.findAll();
+		for (Visitor visitor: allVisitors) {
+			count++;
+		}
+		return count;
+	}
+	
+	public int getLikes() {
+		int likesCount=0;
+		Iterable<Vote> likedVotes = voteRepo.findVoteByLiked(true);
+		for (Vote vote:likedVotes) {
+			likesCount++;
+		}
+		return likesCount;
+	}
+	
+	public int getDislikes() {
+		int dislikes=0;
+		Iterable<Vote> dislikesVotes = voteRepo.findVoteByDisliked(true);
+		for (Vote vote : dislikesVotes) {
+			dislikes++;
+		}
+		return dislikes;
+	}
+	
 }

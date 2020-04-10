@@ -50,8 +50,9 @@ class MyWebSiteApplicationTests {
 	public void testVote() {
 		Vote testVote = new Vote();
 		testVote.setLiked(true);
-		testVote.setUnliked(false);
+		testVote.setDisliked(null);
 		testVote.setDate(null);
+		testVote.setIpVoted("1.1.172.30.45");
 		voteRepo.save(testVote);
 		
 		}
@@ -98,8 +99,20 @@ class MyWebSiteApplicationTests {
 		adminLogInRepo.save(newAdminLogin);
 	}
 	
+	
+	@Test
+	public void getLikes() {
+		int likes = mySiteDAO.getLikes();
+		System.out.print("Like count is" + likes);
+	}
+	
+	@Test 
+	public void getDislikes() {
+		int dislikes = mySiteDAO.getDislikes();
+		System.out.print("Dislike count is:" + dislikes);
+	}
 //	@Test
-//	public void getLiks() {
+//	public void getLiks()  {
 //		 System.out.print("All likes count " + mySiteDAO.getLikeCount());
 //	}
 

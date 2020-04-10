@@ -40,7 +40,7 @@ public class RestAPI {
 	@Autowired
 	private JwtUtil jwtUtil;
 	
-	@RequestMapping(value="/authenticate" , method = RequestMethod.POST)
+	@RequestMapping(value="/authenticate" , method = RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
 		try {
 		authecationManager.authenticate(
@@ -65,9 +65,10 @@ public class RestAPI {
 	// works {"id":null,"liked":true,"unliked":true,"date":null}
 	@RequestMapping(value="/rest/vote" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void vote(@RequestBody Vote vote ) {
+		System.out.print(vote.getDisliked());
 		mySiteDAO.vote(vote);
 	}
-	//works {"id":null,"date":null,"ip":"1.2.3.4.5","comment":"comment"}
+	//works  {"id": 6,"date": null,"ip": "my IP","comment": "new user"}
 	@RequestMapping(value="/rest/visitor", method=RequestMethod.POST , consumes= MediaType.APPLICATION_JSON_VALUE) 
 	public void newVisitor(@RequestBody Visitor visitor) {
 		mySiteDAO.visitor(visitor);
