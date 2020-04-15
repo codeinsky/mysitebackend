@@ -5,10 +5,12 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.myweb.site.beans.AboutMe;
 import com.myweb.site.beans.Visitor;
 import com.myweb.site.beans.Vote;
 import com.myweb.site.dao.MySiteDAO;
@@ -54,5 +56,13 @@ public class MobileRestAPI {
 		return mySiteDAO.getAllVotes();
 		
 	}
+	
+	//works {"id":null,"section":"education","details":"flight","cooment":"testComment1"}
+	@RequestMapping(value="/android/setaboutme", method=RequestMethod.POST , consumes= MediaType.APPLICATION_JSON_VALUE) 
+	public void newVisitor(@RequestBody AboutMe aboutMe) {
+		mySiteDAO.addAboutMeSection(aboutMe);
+	}
+	
+	
 
 }

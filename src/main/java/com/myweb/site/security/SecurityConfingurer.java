@@ -35,11 +35,13 @@ public class SecurityConfingurer extends WebSecurityConfigurerAdapter{
 			.antMatchers("/getallvisitors").permitAll()
 			.antMatchers("/rest/visitor").permitAll()
 			.antMatchers("/rest/vote").permitAll()
+			.antMatchers("/rest/getallaboutme").permitAll()
 			.antMatchers("/test").permitAll()
 			.antMatchers("/android/getvisitorcount").permitAll()
 			.antMatchers("/android/getlikescount").permitAll()
 			.antMatchers("/android/getdislikescount").permitAll()
 			.antMatchers("/android/getallvotes").permitAll()
+			.antMatchers("/android/setaboutme").permitAll()
 			.anyRequest().authenticated()
 			.and().sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

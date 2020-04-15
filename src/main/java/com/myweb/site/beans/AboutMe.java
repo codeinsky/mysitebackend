@@ -18,7 +18,7 @@ public class AboutMe {
 	private String section;
 	
 	@Column
-	private String cooment;
+	private String comment;
 	
 	@Column 
 	private String details;
@@ -28,11 +28,11 @@ public class AboutMe {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AboutMe(int id, String section, String cooment, String details) {
+	public AboutMe(int id, String section, String comment, String details) {
 		super();
 		this.id = id;
 		this.section = section;
-		this.cooment = cooment;
+		this.comment = comment;
 		this.details = details;
 	}
 
@@ -53,11 +53,11 @@ public class AboutMe {
 	}
 
 	public String getCooment() {
-		return cooment;
+		return comment;
 	}
 
-	public void setCooment(String cooment) {
-		this.cooment = cooment;
+	public void setCooment(String comment) {
+		this.comment = comment;
 	}
 
 	public String getDetails() {
@@ -70,7 +70,7 @@ public class AboutMe {
 
 	@Override
 	public String toString() {
-		return "AboutMe [id=" + id + ", section=" + section + ", cooment=" + cooment + ", details=" + details + "]";
+		return "AboutMe [id=" + id + ", section=" + section + ", comment=" + comment + ", details=" + details + "]";
 	}
 	
 	
