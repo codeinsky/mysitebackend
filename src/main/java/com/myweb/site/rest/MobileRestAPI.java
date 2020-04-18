@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myweb.site.beans.AboutMe;
+import com.myweb.site.beans.Projects;
 import com.myweb.site.beans.Visitor;
 import com.myweb.site.beans.Vote;
 import com.myweb.site.dao.MySiteDAO;
@@ -63,6 +64,22 @@ public class MobileRestAPI {
 		mySiteDAO.addAboutMeSection(aboutMe);
 	}
 	
+	@RequestMapping(value="/android/getallaboutme", method=RequestMethod.GET , produces= MediaType.APPLICATION_JSON_VALUE) 
+	public Iterable<AboutMe> getAbouteMe() {
+		return  mySiteDAO.getAllAboutMe();
+		
+	}
+	
+	@RequestMapping(value="/android/getallprojects", method=RequestMethod.GET , produces= MediaType.APPLICATION_JSON_VALUE) 
+	public Iterable<Projects> getAllProjects() {
+		return mySiteDAO.getAllProjects();
+		
+	}
+	
+	@RequestMapping(value="/android/setproject", method=RequestMethod.POST , consumes= MediaType.APPLICATION_JSON_VALUE) 
+	public void newVisitor(@RequestBody Projects project) {
+		mySiteDAO.setProject(project);
+	}
 	
 
 }

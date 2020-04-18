@@ -42,6 +42,9 @@ public class SecurityConfingurer extends WebSecurityConfigurerAdapter{
 			.antMatchers("/android/getdislikescount").permitAll()
 			.antMatchers("/android/getallvotes").permitAll()
 			.antMatchers("/android/setaboutme").permitAll()
+			.antMatchers("/android/getallaboutme").permitAll()
+			.antMatchers("/android/getallprojects").permitAll()
+			.antMatchers("/android/setproject").permitAll()
 			.anyRequest().authenticated()
 			.and().sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
