@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -75,11 +76,28 @@ public class MobileRestAPI {
 		return mySiteDAO.getAllProjects();
 		
 	}
-	
+	//works {"id":null,"name":"backend","system":"JAVA project","comment":"my project","links":"GitHub"}
 	@RequestMapping(value="/android/setproject", method=RequestMethod.POST , consumes= MediaType.APPLICATION_JSON_VALUE) 
 	public void newVisitor(@RequestBody Projects project) {
 		mySiteDAO.setProject(project);
 	}
 	
+	@RequestMapping(value="/android/deleteproject/{id}", method=RequestMethod.DELETE)
+	public void deleteProject(@PathVariable("id") int id ) {
+		mySiteDAO.deleteProject(id);
+		
+	}
+	
+	@RequestMapping(value="/android/deleteaboutme/{id}", method=RequestMethod.DELETE)
+	public void deleteAbout(@PathVariable("id") int id ) {
+		mySiteDAO.deleteAboutMeSection(id);
+		
+	}
+	
+	@RequestMapping(value="/android/getallvisitors", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public Iterable<Visitor> getAllVisitors(){
+		return mySiteDAO.getAllVisitors();
+		
+	}
 
 }
