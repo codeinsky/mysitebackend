@@ -99,5 +99,7 @@ public class MobileRestAPI {
 		return mySiteDAO.getAllVisitors();
 		
 	}
+	
+
 
 }
