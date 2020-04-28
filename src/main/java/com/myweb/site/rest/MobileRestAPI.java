@@ -25,14 +25,6 @@ public class MobileRestAPI {
 	@Autowired
 	MySiteDAO mySiteDAO;
 	
-	@Autowired 
-	private AuthenticationManager authecationManager;
-	
-	@Autowired
-	private UserDetailsService userDetailsService; 
-	
-	@Autowired
-	private JwtUtil jwtUtil;
 	
 	
 	@RequestMapping(value="/android/getvisitorcount", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
