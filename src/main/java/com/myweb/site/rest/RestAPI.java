@@ -1,5 +1,9 @@
 package com.myweb.site.rest;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,11 +13,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myweb.site.beans.AboutMe;
 import com.myweb.site.beans.Projects;
@@ -39,6 +46,16 @@ public class RestAPI {
 	
 	@Autowired
 	private JwtUtil jwtUtil;
+	
+	@RequestMapping(value = "/",method = RequestMethod.GET)
+		public void redirectToTwitter(HttpServletResponse httpServletResponse) throws IOException {
+		    httpServletResponse.sendRedirect("http://localhost:8181/home/index.html");
+		}
+	
+	@RequestMapping(value = "/home/",  method = RequestMethod.GET)
+		public void redirectT(HttpServletResponse httpServletResponse) throws IOException {
+		    httpServletResponse.sendRedirect("http://localhost:8181/home/index.html");
+		}
 	
 	@RequestMapping(value="/authenticate" , method = RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
