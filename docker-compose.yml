@@ -1,0 +1,25 @@
+version: "3"
+services: 
+  postgres:
+    image: postgres:latest 
+    ports: 
+      - "5432:5432"
+    environment: 
+        - POSTGRES_PASSWORD=admin 
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=web
+# App*********************************************
+  my-site-backend:
+    image: my-site-backend:latest 
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/web
+    ports: 
+     - "8181:8181"
+    depends_on:
+     - postgres 
+
+  
+   
+ 
+  
+  

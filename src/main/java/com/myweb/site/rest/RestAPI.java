@@ -48,14 +48,33 @@ public class RestAPI {
 	private JwtUtil jwtUtil;
 	
 	@RequestMapping(value = "/",method = RequestMethod.GET)
-		public void redirectToTwitter(HttpServletResponse httpServletResponse) throws IOException {
+		public void redirectFromMain(HttpServletResponse httpServletResponse) throws IOException {
 		    httpServletResponse.sendRedirect("http://localhost:8181/home/index.html");
 		}
 	
 	@RequestMapping(value = "/home/",  method = RequestMethod.GET)
-		public void redirectT(HttpServletResponse httpServletResponse) throws IOException {
+		public void redirectFromHome(HttpServletResponse httpServletResponse) throws IOException {
 		    httpServletResponse.sendRedirect("http://localhost:8181/home/index.html");
 		}
+	
+	@RequestMapping(value = "/home/aboutme",  method = RequestMethod.GET)
+	public void redirectAboutMe(HttpServletResponse httpServletResponse) throws IOException {
+	    httpServletResponse.sendRedirect("http://localhost:8181/home/index.html");
+	}
+	
+	@RequestMapping(value = "/home/projects",  method = RequestMethod.GET)
+	public void redirectFromProjects(HttpServletResponse httpServletResponse) throws IOException {
+	    httpServletResponse.sendRedirect("http://localhost:8181/home/index.html");
+	}
+	
+	@RequestMapping(value = "/home/contact",  method = RequestMethod.GET)
+	public void redirectFromContacts(HttpServletResponse httpServletResponse) throws IOException {
+	    httpServletResponse.sendRedirect("http://localhost:8181/home/index.html");
+	}
+	
+	
+	
+	
 	
 	@RequestMapping(value="/authenticate" , method = RequestMethod.POST, consumes= MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
